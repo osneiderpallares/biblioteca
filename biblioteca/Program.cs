@@ -1,4 +1,4 @@
-using biblioteca.Mapper;
+//using biblioteca.Mapper;
 //using biblioteca.Models;
 using Microsoft.EntityFrameworkCore;
 using WebApiBiblioteca.Context;
@@ -9,17 +9,17 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var conString = builder.Configuration.GetConnectionString("connection");
+//var conString = builder.Configuration.GetConnectionString("connection");
 
 //builder.Services.AddDbContext<BibiotecaContext>(options =>
 //    options.UseSqlServer(conString));
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(conString));
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseSqlServer(conString));
 
-builder.Services.AddScoped<LibrosServices>();
+//builder.Services.AddScoped<LibrosServices>();
 
-builder.Services.AddAutoMapper(typeof(MapperConfig));
+//builder.Services.AddAutoMapper(typeof(MapperConfig));
 
 builder.Services.AddHttpClient();
 
