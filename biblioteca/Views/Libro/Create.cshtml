@@ -1,0 +1,69 @@
+﻿@model WebApiBiblioteca.DTOs.LibroDTO
+
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<h1>Crear</h1>
+
+<h4>Libro</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (ViewBag.ErrorMessage2 != null)
+            {
+                <div class="alert alert-danger">@ViewBag.ErrorMessage2</div>
+            }
+            <div class="form-group">
+                <label asp-for="Titulo" class="control-label">
+                    @Html.DisplayNameFor(model => model.Titulo) <span class="text-danger">*</span>
+                </label>
+                <input asp-for="Titulo" class="form-control" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Año" class="control-label"></label>
+                <input asp-for="Año" class="form-control" />
+                <span asp-validation-for="Año" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genero" class="control-label">
+                    @Html.DisplayNameFor(model => model.Genero) <span class="text-danger">*</span>
+                </label>
+                <input asp-for="Genero" class="form-control" />
+                <span asp-validation-for="Genero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Paginas" class="control-label"></label>
+                <input asp-for="Paginas" class="form-control" />
+                <span asp-validation-for="Paginas" class="text-danger"></span>
+            </div>            
+            <div class="form-group">
+                <label asp-for="Autor" class="control-label">
+                    @Html.DisplayNameFor(model => model.Autor) <span class="text-danger">*</span>
+                </label>
+                <select asp-for="Autor" class ="form-control" asp-items="ViewBag.Autor"></select>
+            </div>
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+            }
+            <div class="form-group">
+                <span class="text-danger">(*) </span>Campos obligatorios
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Regresar</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
