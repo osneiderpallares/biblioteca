@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using System.Net.Http;
 using System.Text;
 using WebApiBiblioteca.DTOs;
 
@@ -77,7 +76,7 @@ namespace biblioteca.Controllers
                         return View("Error", errorContent);
                     }
                 }
-                
+
                 return View(autor);
             }
             catch (Exception ex)
@@ -112,7 +111,7 @@ namespace biblioteca.Controllers
             if (autor == null)
             {
                 return NotFound();
-            }           
+            }
             return View(autor);
         }
         // POST: Autor/Edit/5
@@ -160,7 +159,7 @@ namespace biblioteca.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }           
+            }
             return View(autor);
         }
         // GET: Autor/Delete/5

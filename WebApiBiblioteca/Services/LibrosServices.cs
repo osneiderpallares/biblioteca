@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using WebApiBiblioteca.Context;
 using WebApiBiblioteca.DTOs;
 using WebApiBiblioteca.Models;
-using Microsoft.AspNetCore.Http;
 
 namespace WebApiBiblioteca.Services
 {
@@ -25,13 +23,13 @@ namespace WebApiBiblioteca.Services
             return listLibrosDTO.ToList();
         }
         public async Task<LibroDTO> DetailsLibros(int? id)
-        {            
+        {
             var libro = await Context.Libros
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (libro == null)
             {
-                return null; 
+                return null;
             }
             var libroDTO = Mapper.Map<LibroDTO>(libro);
             return libroDTO;
@@ -39,7 +37,7 @@ namespace WebApiBiblioteca.Services
         public async Task<bool> Save(Libro libro)
         {
             Context.Add(libro);
-            await Context.SaveChangesAsync();            
+            await Context.SaveChangesAsync();
             return true;
         }
         public async Task<bool> DeleteLibros(Libro libro)

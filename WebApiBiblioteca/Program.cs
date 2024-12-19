@@ -1,8 +1,8 @@
-using WebApiBiblioteca.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 using WebApiBiblioteca.Context;
 using WebApiBiblioteca.Mapper;
-using Microsoft.OpenApi.Models;
+using WebApiBiblioteca.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,9 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
-builder.Services.AddSwaggerGen(c => 
-{ 
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Biblioteca App", Version = "v1"});
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Biblioteca App", Version = "v1" });
 });
 
 builder.Services.AddAutoMapper(typeof(MapperConfig));

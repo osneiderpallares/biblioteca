@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using WebApiBiblioteca.Context;
-using WebApiBiblioteca.DTOs;
 using WebApiBiblioteca.Models;
 
 namespace WebApiBiblioteca.Services
@@ -24,7 +22,7 @@ namespace WebApiBiblioteca.Services
             if (parametro == null)
             {
                 return null;
-            }            
+            }
             return parametro;
         }
     }

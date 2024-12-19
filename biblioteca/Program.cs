@@ -1,9 +1,5 @@
 //using biblioteca.Mapper;
 //using biblioteca.Models;
-using Microsoft.EntityFrameworkCore;
-using WebApiBiblioteca.Context;
-using WebApiBiblioteca.Services;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

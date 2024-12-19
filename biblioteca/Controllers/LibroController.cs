@@ -1,5 +1,4 @@
-﻿using Azure;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -10,7 +9,7 @@ using WebApiBiblioteca.Models;
 namespace biblioteca.Controllers
 {
     public class LibroController : Controller
-    {      
+    {
         private readonly HttpClient _httpClient;
 
         public LibroController(HttpClient httpClient)
@@ -28,7 +27,7 @@ namespace biblioteca.Controllers
                 var content = await response.Content.ReadAsStringAsync();
                 var result = JsonConvert.DeserializeObject<IEnumerable<LibroDTO>>(content);
                 return View("Index", result);
-            }            
+            }
 
             return View(new List<LibroDTO>());
         }
@@ -87,14 +86,14 @@ namespace biblioteca.Controllers
                         }).ToList();
 
                         ViewData["Autor"] = selectList;
-                    }                    
+                    }
                     return View(libro);
                 }
                 var par = "numero de libros permitidos";
                 var numMaxLibros = await _httpClient.GetAsync($"/api/Parametros/parametro?parametro={par}");
                 var cont = await numMaxLibros.Content.ReadAsStringAsync();
                 var parametro = JsonConvert.DeserializeObject<Parametros>(cont);
-          
+
                 var r = await _httpClient.GetAsync("/api/Libros/listLibros");
                 var c = await r.Content.ReadAsStringAsync();
                 var conteo = JsonConvert.DeserializeObject<IEnumerable<Libro>>(c);
@@ -230,7 +229,7 @@ namespace biblioteca.Controllers
                         var errorContent = await respuesta.Content.ReadAsStringAsync();
                         // Puedes registrar el error o mostrar un mensaje al usuario
                         return View("Error", errorContent);
-                    }                   
+                    }
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -261,11 +260,11 @@ namespace biblioteca.Controllers
                 ViewData["Autor"] = selectList;
             }
             return View(libro);
-        }       
+        }
 
         // GET: Libro/Delete/5
         public async Task<IActionResult> Delete(int? id)
-        {           
+        {
             var response = await _httpClient.GetAsync($"/api/Libros/detailsLibro?id={id}");
             if (response.IsSuccessStatusCode)
             {
@@ -279,7 +278,7 @@ namespace biblioteca.Controllers
                 return View(result);
             }
 
-            return View(new LibroDTO());          
+            return View(new LibroDTO());
         }
         // POST: Libro/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -297,7 +296,7 @@ namespace biblioteca.Controllers
                     var contenido = new StringContent(JsonConvert.SerializeObject(result), Encoding.UTF8, "application/json");
 
                     await _httpClient.PostAsync("/api/Libros/deleteLibro", contenido);
-                                      
+
                 }
             }
             return RedirectToAction(nameof(Index));

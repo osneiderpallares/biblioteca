@@ -1,10 +1,7 @@
-﻿using WebApiBiblioteca.Models;
-using WebApiBiblioteca.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebApiBiblioteca.Context;
-using WebApiBiblioteca.DTOs;
+using WebApiBiblioteca.Models;
+using WebApiBiblioteca.Services;
 
 namespace WebApiBiblioteca.Controllers
 {
